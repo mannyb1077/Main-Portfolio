@@ -1,5 +1,6 @@
 // Initialize Firebase
-var config = {
+var config = 
+{
   apiKey: "AIzaSyA8lKEedB0bWMFT2mPbT7WAoGvoPr_FCWU",
   authDomain: "portfolio-3e65e.firebaseapp.com",
   databaseURL: "https://portfolio-3e65e.firebaseio.com",
@@ -7,34 +8,40 @@ var config = {
   storageBucket: "portfolio-3e65e.appspot.com",
   messagingSenderId: "263811232263"
 };
+
 firebase.initializeApp(config);
 
 var database = firebase.database();
 
+$("#open-form").on("click", function() 
+{
+  modal.style.display='block';
+  //$("#id01").modal.style.display='block';
+});
+
 $("#add-contact").on("click", function(event) 
-  {
-    
+{
     event.preventDefault();
     
-    var newContactName = $("#name-input").val().trim();
-    var newContactEmail = $("#email-input").val().trim();//.trim();
-    var newContactPhone = $("#phone-input").val().trim(); //.trim(),
-    var newContactNotes = $("#notes-input").val().trim();//.trim();
+    var contactName = $("#name-input").val().trim();
+    var contactEmail = $("#email-input").val().trim();//.trim();
+    var contactPhone = $("#phone-input").val().trim(); //.trim(),
+    var contactNotes = $("#notes-input").val().trim();//.trim();
     var newContact = 
     {
-      name:  newContactName,
-      email: newContactEmail,
-      phone: newContactPhone,
-      notes: newContactNotes
+      name:  contactName,
+      email: contactEmail,
+      phone: contactPhone,
+      notes: contactNotes
     };
 
-    if (name == "" || email == "" || phone == "" || notes == "")
+    if (contactName == "" || contactEmail == "" || contactPhone == "" || contactNotes == "")
     {
-      //alert("Please do not leave any empty fields");
+      alert("Please do not leave any empty fields");
     }
     else
     {
-      database.ref().push(newContact);
+     database.ref().push(newContact);
 
       //Info to firebase
       console.log("This is Pushing name to Firebase: " + newContact.name);
@@ -44,14 +51,25 @@ $("#add-contact").on("click", function(event)
 
       closeForm()
 
-      alert(newContact + "Your Information has been successfully sent");
-      
+      alert("Your Information has been successfully sent");
     }
+});
+
+database.ref().on("child_added", function(childSnapshot) 
+  {
+    var newName = childSnapshot.val().name;
+    var newEmail = childSnapshot.val().email;
+    var newPhone = childSnapshot.val().phone;
+    var newNotes = childSnapshot.val().notes;
+   
+    // Info from firebase
+      console.log("This is Receiving Name from Firebase " + newName);
+      console.log("This is Receiving email from Firebase " + newEmail);
+      console.log("This is Receiving phone number from Firebase " + newPhone);
+      console.log("This is Receiving notes from Firebase " + newNotes); 
   });
 
 
-
-  
   database.ref().on("child_added", function(childSnapshot) 
   {
     var newContactName = childSnapshot.val().name;
@@ -60,6 +78,12 @@ $("#add-contact").on("click", function(event)
     var newContactNotes = childSnapshot.val().notes;
     
     //email or text new information to manny
+    $.ajax({
+      url: "https://formspree.io/mannyb1077@gmail.com",
+      method: "POST",
+      data: {message: "You have a new contact request"},
+      dataType: "json"
+    })
   });
 
 function clearFormInputs()
@@ -75,7 +99,8 @@ function clearFormInputs()
     clearFormInputs()
     modal.style.display = "none";
   }
-  
+
+
   $(".cancelbtn, .close").on("click", function() 
   {
     clearFormInputs()

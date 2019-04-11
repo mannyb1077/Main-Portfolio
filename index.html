@@ -31,15 +31,17 @@
                         <a href="projects.html" class="nav-link">Projects</a>
                     </li>
                     <li role="presentation" class="nav-item">
-                        <a href="#" class="nav-link">Contact</a>
-                        <!-- <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Contact me</a> -->
+                        <a class="nav-link" id="open-form" style="width:auto;">Contact</a>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <a href="#" class="nav-link" id="open-form" style="width:auto;">Resume</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class="page lanidng-page">
+    <main class="page landing-page">
         <section class="portfolio-block block-intro">
             <div class="container">
                 <div class ="avatar">
@@ -81,6 +83,8 @@
                 <div class="d-flex justify-content-center align-items-center content" style="margin-top:15px;">
                     <h3>Like what you see? </h3>
                     <a class="btn btn-outline-primary btn-lg" role="button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Contact me</a>
+
+                    <!-- <a class="btn btn-outline-primary btn-lg" id ="open-form" role="button" style="width:auto;">Contact me</a> -->
                 </div>
             </div>
         </section>
@@ -130,7 +134,7 @@
                             </div>
                             <div class="card-body"> 
                                 <hr>
-                                <p class="card-text">Professional Installation and setup of complex networks using vlan's, vpn and subnets.</p>
+                                <p class="card-text">Professional Installation and setup of complex networks using VLANs, VPN and subnets.  Configure and maintain routers, switches and network systems.  Research and recommend secure network solutions to prevent, detect and investigate suspicious activity.  Monitor and evaluate network adn data communicatios statistics.</p>
                             </div>
                         </div>
                     </div>
@@ -142,15 +146,13 @@
     <!-- modal Form -->  
   <div id="id01" class="modal">
     
-        <form class="modal-content animate" action="/action_page.php">
+        <form class="modal-content animate" action="">
           <div class="imgcontainer">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
             <img src="assets/images/manny.jpg" alt="Avatar" class="avatar-modal">
           </div>
-      
-    
-          <div class="container">
-       
+  
+          <div class="container">  
             <div class="form-group">
               <label for="Name-input">Name</label>
               <input class="form-control" id="name-input" placeholder="Please Enter Full Name" type="text">
