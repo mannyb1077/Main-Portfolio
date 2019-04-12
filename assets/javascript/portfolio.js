@@ -78,12 +78,13 @@ database.ref().on("child_added", function(childSnapshot)
     var newContactNotes = childSnapshot.val().notes;
     
     //email or text new information to manny
-    $.ajax({
-      url: "https://formspree.io/mannyb1077@gmail.com",
-      method: "POST",
-      data: {message: "You have a new contact request"},
-      dataType: "json"
-    })
+    //Thi
+    // $.ajax({
+    //   url: "https://formspree.io/mannyb1077@gmail.com",
+    //   method: "POST",
+    //   data: {message: "You have a new request"},
+    //   dataType: "json"
+    // })
   });
 
 function clearFormInputs()
