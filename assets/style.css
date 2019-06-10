@@ -175,7 +175,7 @@ body
   .portfolioImage
   {
     width: 300px;
-    height: 200px;
+    height: 300px;
     margin-bottom: 5px;
   }
   .card-body 
@@ -267,7 +267,7 @@ span.psw {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 0 auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }

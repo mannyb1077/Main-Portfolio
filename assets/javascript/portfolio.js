@@ -78,7 +78,7 @@ database.ref().on("child_added", function(childSnapshot)
     var newContactNotes = childSnapshot.val().notes;
     
     //email or text new information to manny
-    //Thi
+    //This is a paid version of formspree
     // $.ajax({
     //   url: "https://formspree.io/mannyb1077@gmail.com",
     //   method: "POST",
@@ -106,3 +106,32 @@ function clearFormInputs()
   {
     clearFormInputs()
   });
+
+
+  //Email 
+
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'portfoliomailer123@gmail.com',
+    pass: 'portfolio123'
+  }
+});
+
+var mailOptions = {
+  from: 'portfoliomailer@gmail.com',
+  to: 'mbarboza@ati-america.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+  
+});
